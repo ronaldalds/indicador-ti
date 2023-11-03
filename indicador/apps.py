@@ -12,35 +12,40 @@ class IndicadorConfig(AppConfig):
         from .models import Interacao
         import os
         from dotenv import load_dotenv
+        from apscheduler.schedulers.background import BackgroundScheduler
 
         load_dotenv()
 
-        
         desk = Desk()
-       
-        def carga_chamado(id):
-            chamado = desk.relatorio(id)
+        
+        def carga_chamado():
+            chamado = desk.relatorio(os.getenv("ID_RELATORIO_DESK_CHAMADO"))
+            print("Atualizando chamados...")
             if chamado:
                 for i in chamado.get("root"):
-                    data_criacao: datetime = datetime.strptime(i.get("DataCriacao"), "%d-%m-%Y")
-                    data_finalizacao: datetime = datetime.strptime(i.get("DataFinalizacao"), "%d-%m-%Y")
-                    data = Chamado(
-                        id=i.get("CodChamado"),
-                        data_criacao=data_criacao,
-                        data_finalizacao=data_finalizacao,
-                        assunto=i.get("Assunto"),
-                        nome_categoria=i.get("NomeCategoria"),
-                        total_horas_1_2_atendimento_str=i.get("TotalHorasPrimeiroSegundoAtendimento"),
-                        nome_sla_status_atual=i.get("NomeSlaStatusAtual"),
-                        sla_2_expirado=i.get("Sla2Expirado"),
-                        first_call=i.get("FirstCall"),
-                        nome_operador=i.get("NomeOperador"),
-                    )
-                    data.save()
-                    print(i)
+                    item = Chamado.objects.filter(id=i.get("CodChamado")).first()
+                    if not item:
+                        print(item)
+                        data_criacao: datetime = datetime.strptime(i.get("DataCriacao"), "%d-%m-%Y")
+                        data_finalizacao: datetime = datetime.strptime(i.get("DataFinalizacao"), "%d-%m-%Y")
+                        data = Chamado(
+                            id=i.get("CodChamado"),
+                            data_criacao=data_criacao,
+                            data_finalizacao=data_finalizacao,
+                            assunto=i.get("Assunto"),
+                            nome_categoria=i.get("NomeCategoria"),
+                            total_horas_1_2_atendimento_str=i.get("TotalHorasPrimeiroSegundoAtendimento"),
+                            nome_sla_status_atual=i.get("NomeSlaStatusAtual"),
+                            sla_2_expirado=i.get("Sla2Expirado"),
+                            first_call=i.get("FirstCall"),
+                            nome_operador=i.get("NomeOperador"),
+                        )
+                        data.save()
+                        print(i)
         
-        def carga_interacao(id):
-            interacao = desk.relatorio(id)
+        def carga_interacao():
+            interacao = desk.relatorio(os.getenv("ID_RELATORIO_DESK_INTERACAO"))
+            print("Atualizando interações...")
             if interacao:
                 for i in interacao.get("root"):
                     chamado = Chamado.objects.filter(id=i.get("NChamado")).first()
@@ -56,9 +61,13 @@ class IndicadorConfig(AppConfig):
                             data.save()
                             print(i)
 
+        sheduler = BackgroundScheduler(daemon=True)
+        sheduler.configure(timezone="america/fortaleza")
+        sheduler.add_job(carga_chamado, 'interval', minutes=10)
+        sheduler.add_job(carga_interacao, 'interval', minutes=10)
 
-        # carga_chamado("140")
+        sheduler.start()
 
+        # carga_chamado()
 
-        carga_interacao("141")
-
+        # carga_interacao()

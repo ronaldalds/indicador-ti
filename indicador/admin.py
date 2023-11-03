@@ -42,6 +42,7 @@ class InteracaoAdmin(admin.ModelAdmin):
         "chamado",
         "status_acao_nome_relatorio",
         "fantasia_fornecedor",
+        "seguencia",
     )
 
     search_fields = [
