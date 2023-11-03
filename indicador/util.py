@@ -54,6 +54,7 @@ class Desk:
             return response.json()
         else:
             print("Error na resposta da rota relatário")
-            return False
+            self.__auth = self.authentication()
+            self.relatorio(id)
 
 

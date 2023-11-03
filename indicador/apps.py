@@ -40,7 +40,7 @@ class IndicadorConfig(AppConfig):
                     print(i)
         
         def carga_interacao(id):
-            interacao = desk.relatorio("141") # 141
+            interacao = desk.relatorio(id)
             if interacao:
                 for i in interacao.get("root"):
                     chamado = Chamado.objects.filter(id=i.get("NChamado")).first()
