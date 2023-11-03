@@ -1,0 +1,58 @@
+// MTTR
+{
+    'CodChamado': '0923-000052',
+    'Assunto': 'Sistemas - Gestão - OTTs - Watch Brasil - Erro',
+    'DataCriacao': '01-09-2023',
+    'NomeStatus': 'Resolvido',
+    'GrupoAutoCategoriaNome': 'Sistemas',
+    'NomeCategoria': 'Sistemas de Gestão - OTTs',
+    'NomeOperador': 'Nicolai'
+    'TotalHorasChamado': '00:04:00',
+    'TotalHorasPrimeiroSegundoAtendimento': '68:19:58',
+}
+// sla_sistema
+{
+    'CodChamado': '0923-000019',
+    'Assunto': 'Sistemas - Gestão - ERP - Cadastro de Endereços - Cadastrar',
+    'DataCriacao': '01-09-2023',
+    'NomeSlaStatusAtual': 'Normal - 2º atendimento'
+}
+// TMA
+{
+    'CodChamado': '0923-000218',
+    'Assunto': 'Sistemas - Atendimento e Comunicação - Telefonia - Ramal - Erro',
+    'NomeSubCategoria': 'Ramal',
+    'NomeOperador': 'Maurício',
+    'NomeSla2Status': 'Normal - 2º atendimento',
+    'NomeCategoria': 'Sistemas de Atendimento e Comunicação - Telefonia'
+    'TotalHorasPrimeiroSegundoAtendimento': '00:12:32',
+}
+// sla_suport
+{
+    'CodChamado': '0923-000418',
+    'Assunto': 'Sistemas - Gestão - ERP - SAC - SAC App Minha Online - Erro',
+    'Sla1Expirado': 'Em Dia',
+    'Sla2Expirado': 'Em Dia',
+    'NomeCategoria': 'Sistemas de Gestão - ERP'
+}
+// FCR
+{
+    'CodChamado': '0923-000058',
+    'Assunto': 'Sistemas - Gestão - ERP - SAC - SAC App Minha Online - Erro',
+    'NomeSubCategoria': 'SAC - SAC App Minha Online',
+    'NomeOperador': 'Nicolai',
+    'FirstCall': 'N',
+    'NomeCategoria': 'Sistemas de Gestão - ERP'
+}
+// Transbordo
+{
+    'NChamado': '0923-000255',
+    'AssuntoChamado': 'Sistemas - Gestão - ERP - Financeiro - Gerenciador de Cobranças - Analisar',
+    'DataCriacaoChamado': '2023-09-04',
+    'DataFinalizacaoChamado': '2023-09-13',
+    'NomeSubCategoriaChamado': 'Financeiro - Gerenciador de Cobranças',
+    'StatusAcaoNomeRelatorio': 'Aguardando Terceiros',
+    'NomeCategoriaChamado': 'Sistemas de Gestão - ERP',
+    'FantasiaFornecedor': 'MK SOLUTIONS',
+    'NomeOperadorChamado': 'Jefferson'
+}

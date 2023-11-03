@@ -1,0 +1,32 @@
+version: '3.8'
+
+services:
+  psql:
+    image: postgres:latest
+    container_name: my_postgresql
+    environment:
+      POSTGRES_DB: indicador
+      POSTGRES_USER: ralds
+      POSTGRES_PASSWORD: ralds
+    ports:
+      - "5432:5432"
+    volumes:
+      - ../data:/var/lib/postgresql/data
+
+  metabase:
+    container_name: meta
+    image: metabase/metabase:latest
+    ports:
+      - "3000:3000"
+    volumes:
+      - ../metabase-data:/metabase-data
+
+  indicador:
+    container_name: indicador
+    build: .
+    ports:
+      - 8004:8004
+    volumes:
+      - .:/app
+    depends_on:
+      - psql
