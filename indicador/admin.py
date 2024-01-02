@@ -25,6 +25,7 @@ class ChamadoAdmin(admin.ModelAdmin):
     list_filter = (
         "nome_categoria",
         "nome_operador",
+        "nome_status",
     )
 
     search_fields = [

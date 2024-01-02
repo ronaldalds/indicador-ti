@@ -24,7 +24,6 @@ class Chamado(models.Model):
     def clean(self):
         id_pattern = r"^(0[1-9]|1[0-2])(\d{2})-\d{6}$"
         total_horas_1_2_atendimento_pattern = re.compile(r'^\d+:\d{1,2}:\d{2}$')
-        print("a")
 
         if not re.match(id_pattern, self.id):
             raise ValidationError("O chamado deve estar no formato '0923-000052'.")
