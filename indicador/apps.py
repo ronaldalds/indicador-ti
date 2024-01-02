@@ -39,6 +39,7 @@ class IndicadorConfig(AppConfig):
                             sla_2_expirado=i.get("Sla2Expirado"),
                             first_call=i.get("FirstCall"),
                             nome_operador=i.get("NomeOperador"),
+                            nome_status=i.get("NomeStatus"),
                         )
                         data.save()
                         print(i)
