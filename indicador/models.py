@@ -19,6 +19,7 @@ class Chamado(models.Model):
     sla_2_expirado = models.CharField(max_length=128)
     first_call = models.CharField(max_length=1, help_text="ex: N ou S")
     nome_operador = models.CharField(max_length=128)
+    nome_status = models.CharField(max_length=128)
 
     def clean(self):
         id_pattern = r"^(0[1-9]|1[0-2])(\d{2})-\d{6}$"

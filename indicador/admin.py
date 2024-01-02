@@ -19,6 +19,7 @@ class ChamadoAdmin(admin.ModelAdmin):
         "total_horas_1_2_atendimento_str",
         "total_horas_1_2_atendimento",
         # ----------------------------------------------------------------
+        "nome_status",
         )
 
     list_filter = (
